@@ -38,7 +38,7 @@ public class GlobalData {
 					org.w3c.dom.Node node=nodes.item(i);
 					if(node.getNodeName().equals("ilosc_elementow")){
 						ne=Integer.parseInt(node.getTextContent());
-						nh=ne;
+						nh=ne+1;
 						System.out.println("Wczytuje ne="+ne);
 					}
 					if(node.getNodeName().equals("calkowita_dlugosc")){
@@ -66,23 +66,23 @@ public class GlobalData {
 		
 	}
 
-	public static int getNe() {
+	public  int getNe() {
 		return ne;
 	}
 
-	public static int getNh() {
+	public  int getNh() {
 		return nh;
 	}
 
-	public static double getL() {
+	public  double getL() {
 		return l;
 	}
 
-	public static double getK() {
+	public  double getK() {
 		return k;
 	}
 
-	public static double getS() {
+	public  double getS() {
 		return s;
 	}
 

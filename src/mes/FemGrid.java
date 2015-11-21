@@ -1,18 +1,12 @@
 package mes;
 
 public class FemGrid {
-	private Element[] elements=new Element[GlobalData.getNe()];
-	private Node[] nodes=new Node[GlobalData.getNh()];
-	public Element[] getElements() {
-		return elements;
+	private Element[] elements;
+	private Node[] nodes;
+	
+	public FemGrid(Element[] _elements, Node[] _nodes){
+		elements=_elements;
+		nodes=_nodes;
 	}
-	public void setElements(Element[] elements) {
-		this.elements = elements;
-	}
-	public Node[] getNodes() {
-		return nodes;
-	}
-	public void setNodes(Node[] nodes) {
-		this.nodes = nodes;
-	}
+	
 }
