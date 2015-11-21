@@ -4,6 +4,7 @@ public class Node {
 	private int temperature;
 	private int boundaryCondition;
 	private double x;
+	private int number;
 	
 	public int getTemperature() {
 		return temperature;
@@ -22,6 +23,12 @@ public class Node {
 	}
 	public void setX(double x) {
 		this.x = x;
+	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
 }
