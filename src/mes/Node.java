@@ -6,10 +6,10 @@ public class Node {
 	private double x;
 	private int id;
 	
-	public Node(int _id, int _boundaryCondition, double le){
+	public Node(int _id, int _boundaryCondition, double _x){
 		id=_id;
 		boundaryCondition=_boundaryCondition;
-		x=le*id;
+		x=_x;
 	}
 
 }
