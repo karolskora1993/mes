@@ -109,18 +109,17 @@ public class Calculations {
 	}
 
 	public void setGlobalData() {
+		try(Scanner in=new Scanner(System.in)){
+		double tEnv=in.nextDouble();
 		double sumK=0;
 		double sumS=0;
 		for(int i=0; i<ne;i++){
 			sumK+=elements[i].getKe();
 			sumS+=elements[i].getSe();
 		}
-		globalData=new GlobalData(ne, ne+1, l, sumK/ne, sumS/ne);
+		globalData=new GlobalData(ne, ne+1, l, sumK/ne, sumS/ne, tEnv);
+		}
 		
-	}
-
-	public void solveSystemOfEquations() {
-
 	}
 
 	public String getFileName() {
@@ -141,6 +140,11 @@ public class Calculations {
 		double q1,alfa1,q2,alfa2;
 		try(Scanner in=new Scanner(System.in)){
 			
+		}
+	}
+	public void setLocalMatrix(){
+		for(int i=0;i<ne;i++){
+			elements[i].setLocalMatrix(globalData);
 		}
 	}
 }

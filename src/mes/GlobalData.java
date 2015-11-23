@@ -7,13 +7,15 @@ public class GlobalData {
 	private  double l;
 	private  double k;
 	private  double s;
+	private double tEnv;
 	
-	public GlobalData(int ne, int nh, double l, double k, double s) {
+	public GlobalData(int ne, int nh, double l, double k, double s, double tEnv) {
 		this.ne = ne;
 		this.nh = nh;
 		this.l = l;
 		this.k = k;
 		this.s = s;
+		this.tEnv=tEnv;
 	}
 
 	public  int getNe() {
@@ -34,6 +36,9 @@ public class GlobalData {
 
 	public  double getS() {
 		return s;
+	}
+	public double getTEnv(){
+		return tEnv;
 	}
 
 

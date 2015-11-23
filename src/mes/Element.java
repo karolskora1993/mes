@@ -9,7 +9,7 @@ public class Element {
 	private double le;
 	private double c;
 	private double[][] hl=new double[2][2];
-	private double[][] pl=new double[1][2];
+	private double[][] pl=new double[2][1];
 	
 	public Element(Node firstNode, Node secondNode, double se, double ke, double le) {
 		this.firstNode = firstNode;
@@ -27,6 +27,34 @@ public class Element {
 	}
 	public double getLe() {
 		return le;
+	}
+	
+	public void setLocalMatrix(GlobalData globalData){
+		c=(se*ke)/le;
+		if(firstNode.getAlfa()!=0){
+		hl[0][0]=c +firstNode.getAlfa() * se;
+		hl[0][1]=-c;
+		hl[1][0]=-c;
+		hl[1][1]=c;
+		
+		pl[0][0]=-firstNode.getAlfa()*globalData.getTEnv()*se;
+		pl[1][0]=0;
+		}
+		else if(secondNode.getAlfa()!=0){
+			hl[0][0]=c;
+			hl[0][1]=-c;
+			hl[1][0]=-c;
+			hl[1][1]=c + secondNode.getAlfa() * se;
+			
+			pl[0][0]=0;
+			pl[1][0]=secondNode.getAlfa()*globalData.getTEnv()*se;
+		}
+		
+		if(firstNode.getQ()!=0)
+			pl[0][0]+=firstNode.getQ()*se;
+		else if(secondNode.getQ()!=0)
+			pl[1][0]+=secondNode.getQ()*se;
+		
 	}
 
 

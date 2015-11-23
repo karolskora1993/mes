@@ -19,5 +19,12 @@ public class Node {
 		else
 			boundaryCondition=0;
 	}
+	
+	public double getQ(){
+		return q;
+	}
+	public double getAlfa(){
+		return alfa;
+	}
 
 }
