@@ -14,10 +14,21 @@ public class Element {
 	public Element(Node firstNode, Node secondNode, double se, double ke, double le) {
 		this.firstNode = firstNode;
 		this.secondNode = secondNode;
-		this.se = se;
+		this.se=se;
 		this.ke = ke;
 		this.le = le;
 	}
+
+	public double getSe() {
+		return se;
+	}
+	public double getKe() {
+		return ke;
+	}
+	public double getLe() {
+		return le;
+	}
+
 
 	
 	

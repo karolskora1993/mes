@@ -5,6 +5,8 @@
         <dlugosc>0.2</dlugosc>
         <wspolczynnik_przewodzenia>50</wspolczynnik_przewodzenia>
         <przekroj>20</przekroj>
+        <alfa>0</alfa>
+        <q>-300</q>
     </element>
     <element>
         <id>2</id>
@@ -41,5 +43,7 @@
         <dlugosc>0.2</dlugosc>
         <wspolczynnik_przewodzenia>30</wspolczynnik_przewodzenia>
         <przekroj>10</przekroj>
+        <alfa>10</alfa>
+        <q>0</q>
     </element>
 </elements_data>

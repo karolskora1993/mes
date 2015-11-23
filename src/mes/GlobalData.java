@@ -1,27 +1,19 @@
 package mes;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 public class GlobalData {
+	private  int ne;
+	private  int nh;
+	private  double l;
+	private  double k;
+	private  double s;
 	
-	private static int ne;
-	private static int nh;
-	private static double l;
-	private static double k;
-	private static double s;
-	
-	public GlobalData(String fileName){
-		
-		
+	public GlobalData(int ne, int nh, double l, double k, double s) {
+		this.ne = ne;
+		this.nh = nh;
+		this.l = l;
+		this.k = k;
+		this.s = s;
 	}
 
 	public  int getNe() {

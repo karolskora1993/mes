@@ -19,7 +19,7 @@ public class Calculations {
 	private Element[] elements;
 	private Node[] nodes;
 	private int ne;
-	private int l=0;
+	private double l=0;
 
 	public void setMaterialData() {
 		
@@ -42,17 +42,17 @@ public class Calculations {
 
 					if (node.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE) {
 						org.w3c.dom.Element el = (org.w3c.dom.Element) node;
-						NodeList nodes =el.getChildNodes();
-						double se;
-						double ke;
-						double le;
-						int id;
-						double alfa;
-						double q;
+						NodeList children =el.getChildNodes();
+						double se=0;
+						double ke=0;
+						double le=0;
+						int id=0;
+						double alfa = 0;
+						double q =0;
 						
-						for(int j=0; j<nodes.getLength();j++){
+						for(int j=0; j<children.getLength();j++){
 							if(!(j%2==0)){
-								org.w3c.dom.Node nd=nodes.item(j);
+								org.w3c.dom.Node nd=children.item(j);
 								if(nd.getNodeName().equals("id")){
 									id=Integer.parseInt(nd.getTextContent());
 									System.out.println("Wczytuje id="+id);
@@ -69,10 +69,36 @@ public class Calculations {
 									se=Double.parseDouble(nd.getTextContent());
 									System.out.println("Wczytuje przekroj="+se);
 								}
+								if(i==0 || i==(nodeList.getLength()-1)){
+									if(nd.getNodeName().equals("alfa")){
+										alfa=Double.parseDouble(nd.getTextContent());
+										System.out.println("Wczytuje alfa="+alfa);
+									}
+									if(nd.getNodeName().equals("q")){
+										q=Double.parseDouble(nd.getTextContent());
+										System.out.println("Wczytuje q="+q);
+								}
+								}
 								
 							}
 						}
-						//elements[i]=new Element(id, le, ke, se);
+						if(i==0)
+						{
+							nodes[0]=new Node(q, alfa, l);
+							l+=le;
+							nodes[1]=new Node(0,0,l);
+						}
+						else if(i==(nodeList.getLength()-1))
+						{
+							l+=le;
+							nodes[i+1]=new Node(q, alfa, l);
+						}
+						else
+						{
+							l+=le;
+							nodes[i+1]=new Node(0,0,l);
+						}
+						elements[i]=new Element(nodes[i], nodes[i+1], se, ke, le);
 					}
 				}
 
@@ -83,7 +109,14 @@ public class Calculations {
 	}
 
 	public void setGlobalData() {
-
+		double sumK=0;
+		double sumS=0;
+		for(int i=0; i<ne;i++){
+			sumK+=elements[i].getKe();
+			sumS+=elements[i].getSe();
+		}
+		globalData=new GlobalData(ne, ne+1, l, sumK/ne, sumS/ne);
+		
 	}
 
 	public void solveSystemOfEquations() {
