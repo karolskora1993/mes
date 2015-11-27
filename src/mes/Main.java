@@ -8,5 +8,7 @@ public class Main {
 		Calculations calc=new Calculations();
 		calc.setMaterialData();
 		calc.setGlobalData();
+		calc.setLocalMatrix();
+		calc.calculateGlobalMatrix();
 	}
 }

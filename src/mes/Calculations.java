@@ -16,14 +16,16 @@ public class Calculations {
 
 	private GlobalData globalData;
 	private FemGrid femGrid;
-	private Element[] elements;
-	private Node[] nodes;
+	private Result result;
+	//private Element[] elements;
+	//private Node[] nodes;
 	private int ne;
 	private double l=0;
 
 	public void setMaterialData() {
-		
 			System.out.println("Wczytuje dane węzłów z pliku");
+			Element[] elements;
+			Node[] nodes;
 
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			try {
@@ -101,6 +103,7 @@ public class Calculations {
 						elements[i]=new Element(nodes[i], nodes[i+1], se, ke, le);
 					}
 				}
+				femGrid=new FemGrid(elements, nodes);
 
 			} catch (ParserConfigurationException | SAXException | IOException e) {
 				// TODO Auto-generated catch block
@@ -111,13 +114,8 @@ public class Calculations {
 	public void setGlobalData() {
 		try(Scanner in=new Scanner(System.in)){
 		double tEnv=in.nextDouble();
-		double sumK=0;
-		double sumS=0;
-		for(int i=0; i<ne;i++){
-			sumK+=elements[i].getKe();
-			sumS+=elements[i].getSe();
-		}
-		globalData=new GlobalData(ne, ne+1, l, sumK/ne, sumS/ne, tEnv);
+		
+		globalData=new GlobalData(ne, ne+1, l,tEnv);
 		}
 		
 	}
@@ -135,16 +133,11 @@ public class Calculations {
 			return fileName;
 		}
 	}
-	public void setBoundaryConditions(){
-		System.out.println("Podaj warunki brzegowe:");
-		double q1,alfa1,q2,alfa2;
-		try(Scanner in=new Scanner(System.in)){
-			
-		}
-	}
 	public void setLocalMatrix(){
-		for(int i=0;i<ne;i++){
-			elements[i].setLocalMatrix(globalData);
-		}
+		femGrid.setlocalMatrix(globalData);
+	}
+	public void calculateGlobalMatrix(){
+		result=new Result();
+		result.calculateGlobalMatrix(femGrid.getElements(), globalData);
 	}
 }
