@@ -26,5 +26,8 @@ public class Node {
 	public double getAlfa(){
 		return alfa;
 	}
+	public double getX(){
+		return x;
+	}
 
 }

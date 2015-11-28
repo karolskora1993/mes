@@ -140,4 +140,13 @@ public class Calculations {
 		result=new Result();
 		result.calculateGlobalMatrix(femGrid.getElements(), globalData);
 	}
+	public void solveSystemOfExuation(){
+		result.solveSystemOfEquation();
+	}
+	public void printTemperatures(){
+		double[] tg=result.getTg();
+		for(int i=0; i<tg.length;i++){
+			System.out.println("węzeł numer "+ i+ "x= "+femGrid.getNodes()[i].getX()+" t="+tg[i]);
+		}
+	}
 }

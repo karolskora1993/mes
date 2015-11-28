@@ -30,4 +30,8 @@ public class FemGrid {
 		return elements;
 	}
 	
+	public Node[] getNodes(){
+		return nodes;
+	}
+	
 }
