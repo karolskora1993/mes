@@ -146,4 +146,10 @@ public class Calculations {
 			System.out.println("węzeł numer "+ i+ " x= "+femGrid.getNodes()[i].getX()+" t="+tg[i]);
 		}
 	}
+	public Result getResult(){
+		return result;
+	}
+	public FemGrid getFemGrid(){
+		return femGrid;
+	}
 }
