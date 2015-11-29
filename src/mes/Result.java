@@ -7,25 +7,23 @@ import no.uib.cipr.matrix.Vector;
 public class Result {
 	
 	private double[][] hg;
-	private double[][] pg;
+	private double[] pg;
 	private double[] tg;
 	
 	public void calculateGlobalMatrix(Element[] elements, GlobalData globalData){
 		hg=new double[globalData.getNh()][globalData.getNh()];
 		//wypełnienie globalnej macierzy sztywności
 		for(int i=0;i<globalData.getNe();i++){
-			for(int j=0;j<2;j++){
-				hg[i][i]+=elements[i].getHlIndex(i, i);
-				hg[i][i+1]+=elements[i].getHlIndex(i, i+1);
-				hg[i+1][i]+=elements[i].getHlIndex(i+1, i);
-				hg[i+1][i+1]+=elements[i].getHlIndex(i+1, i+1);
-			}
+				hg[i][i]+=elements[i].getHlIndex(0, 0);
+				hg[i][i+1]+=elements[i].getHlIndex(0, 1);
+				hg[i+1][i]+=elements[i].getHlIndex(1, 0);
+				hg[i+1][i+1]+=elements[i].getHlIndex(1, 1);
 		}
 		//wypełnienie globalnego wektora obciążeń
-		pg=new double[globalData.getNh()][1];
+		pg=new double[globalData.getNh()];
 		for(int i=0; i<globalData.getNe(); i++){
-			pg[i][1]+=elements[i].getPlIndex(i);
-			pg[i+1][1]+=elements[i+1].getPlIndex(i);
+			pg[i]+=elements[i].getPlIndex(0);
+			pg[i+1]+=elements[i].getPlIndex(1);
 		}
 	}
 	public void solveSystemOfEquation(){
@@ -39,7 +37,7 @@ public class Result {
 		}
 		double[] bTemp=new double[pg.length];
 		for(int i=0; i<pg.length;i++)
-			bTemp[i]=pg[i][1];
+			bTemp[i]=pg[i];
 		
 		double[] xTemp=new double[hg.length];
 		
@@ -53,5 +51,11 @@ public class Result {
 	}
 	public double[] getTg(){
 		return tg;
+	}
+	public void solveSystemOfEquationGS(){
+		double[] b=new double[pg.length];
+		for(int i=0; i<pg.length;i++)
+			b[i]=-pg[i];
+		tg= GS.solve(hg, b);
 	}
 }

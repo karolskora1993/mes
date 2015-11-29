@@ -21,7 +21,8 @@ public class Calculations {
 	//private Node[] nodes;
 	private int ne;
 	private double l=0;
-
+	private Scanner in=new Scanner(System.in);
+	
 	public void setMaterialData() {
 			System.out.println("Wczytuje dane węzłów z pliku");
 			Element[] elements;
@@ -112,18 +113,15 @@ public class Calculations {
 	}
 
 	public void setGlobalData() {
-		try(Scanner in=new Scanner(System.in)){
+		System.out.println("Podaj temperature otoczenia:");
 		double tEnv=in.nextDouble();
 		
 		globalData=new GlobalData(ne, ne+1, l,tEnv);
-		}
 		
 	}
 
 	public String getFileName() {
 		System.out.println("Podaj nazwe pliku z danymi :");
-
-		try (Scanner in = new Scanner(System.in)) {
 
 			String name = in.nextLine();
 			StringBuilder stringBuilder = new StringBuilder();
@@ -131,7 +129,6 @@ public class Calculations {
 			stringBuilder.append(".xml");
 			String fileName = stringBuilder.toString();
 			return fileName;
-		}
 	}
 	public void setLocalMatrix(){
 		femGrid.setlocalMatrix(globalData);
@@ -141,12 +138,12 @@ public class Calculations {
 		result.calculateGlobalMatrix(femGrid.getElements(), globalData);
 	}
 	public void solveSystemOfExuation(){
-		result.solveSystemOfEquation();
+		result.solveSystemOfEquationGS();
 	}
 	public void printTemperatures(){
 		double[] tg=result.getTg();
 		for(int i=0; i<tg.length;i++){
-			System.out.println("węzeł numer "+ i+ "x= "+femGrid.getNodes()[i].getX()+" t="+tg[i]);
+			System.out.println("węzeł numer "+ i+ " x= "+femGrid.getNodes()[i].getX()+" t="+tg[i]);
 		}
 	}
 }

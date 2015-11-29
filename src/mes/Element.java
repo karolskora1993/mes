@@ -58,7 +58,7 @@ public class Element {
 		return hl[index1][index2];
 	}
 	public double getPlIndex(int index){
-		return pl[index][1];
+		return pl[index][0];
 	}
 
 
