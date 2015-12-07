@@ -12,6 +12,7 @@ public class Main {
 		calc.setGlobalData();
 		calc.setLocalMatrix();
 		calc.calculateGlobalMatrix();
+		calc.printGlobalMatrix();
 		calc.solveSystemOfExuation();
 		calc.printTemperatures();
 

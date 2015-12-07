@@ -1,7 +1,7 @@
 package mes;
 
 public class GS {
-	private static int accuracy=100;
+	private static int accuracy=1000;
 	
 	public static void setAccuracy(int a){
 		accuracy=a;

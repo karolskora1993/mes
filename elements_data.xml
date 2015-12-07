@@ -2,48 +2,18 @@
 <elements_data>
 	<element>
         <id>1</id>
-        <dlugosc>0.2</dlugosc>
+        <dlugosc>2.5</dlugosc>
         <wspolczynnik_przewodzenia>50</wspolczynnik_przewodzenia>
-        <przekroj>20</przekroj>
-        <alfa>0</alfa>
-        <q>-300</q>
-    </element>
-    <element>
-        <id>2</id>
-        <dlugosc>0.2</dlugosc>
-        <wspolczynnik_przewodzenia>80</wspolczynnik_przewodzenia>
-        <przekroj>25</przekroj>
-    </element>
-    <element>
-        <id>3</id>
-        <dlugosc>0.2</dlugosc>
-        <wspolczynnik_przewodzenia>45</wspolczynnik_przewodzenia>
-        <przekroj>30</przekroj>
-    </element>
-    <element>
-        <id>4</id>
-        <dlugosc>0.2</dlugosc>
-        <wspolczynnik_przewodzenia>15</wspolczynnik_przewodzenia>
-        <przekroj>35</przekroj>
-    </element>
-    <element>
-        <id>5</id>
-        <dlugosc>0.2</dlugosc>
-        <wspolczynnik_przewodzenia>60</wspolczynnik_przewodzenia>
-        <przekroj>25</przekroj>
-    </element>
-    <element>
-        <id>6</id>
-        <dlugosc>0.2</dlugosc>
-        <wspolczynnik_przewodzenia>20</wspolczynnik_przewodzenia>
-        <przekroj>15</przekroj>
+        <przekroj>2</przekroj>
+        <alfa>10</alfa>
+        <q>0</q>
     </element>
     <element>
         <id>7</id>
-        <dlugosc>0.2</dlugosc>
-        <wspolczynnik_przewodzenia>30</wspolczynnik_przewodzenia>
-        <przekroj>10</przekroj>
-        <alfa>10</alfa>
-        <q>0</q>
+        <dlugosc>2.5</dlugosc>
+        <wspolczynnik_przewodzenia>50</wspolczynnik_przewodzenia>
+        <przekroj>2</przekroj>
+        <alfa>0</alfa>
+        <q>-150</q>
     </element>
 </elements_data>

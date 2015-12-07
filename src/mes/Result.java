@@ -1,8 +1,5 @@
 package mes;
 
-import no.uib.cipr.matrix.BandMatrix;
-import no.uib.cipr.matrix.DenseVector;
-import no.uib.cipr.matrix.Vector;
 
 public class Result {
 	
@@ -26,36 +23,27 @@ public class Result {
 			pg[i+1]+=elements[i].getPlIndex(1);
 		}
 	}
-	public void solveSystemOfEquation(){
-		BandMatrix matrix=new BandMatrix(hg.length,1,1);
-		for(int i=0; i<hg.length;i++)
-		{
-			for(int j=0; j<hg.length; j++)
-			{
-				matrix.add(i, j, hg[i][j]);
-			}
-		}
-		double[] bTemp=new double[pg.length];
-		for(int i=0; i<pg.length;i++)
-			bTemp[i]=pg[i];
-		
-		double[] xTemp=new double[hg.length];
-		
-		Vector b=new DenseVector(bTemp);
-		Vector x=new DenseVector(xTemp);
-		
-		x= matrix.solve(b, x);
-		tg=new double[hg.length];
-		for(int i=0; i<tg.length;i++)
-			tg[i]=x.get(i);
-	}
 	public double[] getTg(){
 		return tg;
 	}
-	public void solveSystemOfEquationGS(){
+	public void solveSystemOfEquation(){
 		double[] b=new double[pg.length];
 		for(int i=0; i<pg.length;i++)
-			b[i]=-pg[i];
+			b[i]=(-1)*pg[i];
 		tg= GS.solve(hg, b);
+	}
+	public void printGlobalMatrix(){
+	System.out.println("=================================================");
+	System.out.println("Macierz globalna H:");
+		for (int i = 0; i < hg.length; i++) {
+			for (int j = 0; j < hg.length; j++) {
+				System.out.print(" "+hg[i][j]+" ");
+			}
+			System.out.println();
+		}
+		System.out.println("Wektor glopalny P:");
+		for (int i = 0; i < pg.length; i++) {
+			System.out.print(" "+hg[i]+" ");
+		}
 	}
 }

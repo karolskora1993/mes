@@ -52,7 +52,7 @@ public class Calculations {
 						int id=0;
 						double alfa = 0;
 						double q =0;
-						
+						System.out.println("Wczytane dane:");
 						for(int j=0; j<children.getLength();j++){
 							if(!(j%2==0)){
 								org.w3c.dom.Node nd=children.item(j);
@@ -121,14 +121,20 @@ public class Calculations {
 	}
 
 	public String getFileName() {
-		System.out.println("Podaj nazwe pliku z danymi :");
-
+		System.out.println("Czy chcesz podać swoją nazwę pliku czy wykorzystać domyślny plik elements_data?(t/n)");
+		String choice=in.nextLine();
+		if(choice.equals("t"))
+		{
+			System.out.println("Podaj nazwę pliku(bez rozszerzenia)");
 			String name = in.nextLine();
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.append(name);
 			stringBuilder.append(".xml");
 			String fileName = stringBuilder.toString();
 			return fileName;
+		}
+		else
+			return "elements_data.xml";
 	}
 	public void setLocalMatrix(){
 		femGrid.setlocalMatrix(globalData);
@@ -138,12 +144,13 @@ public class Calculations {
 		result.calculateGlobalMatrix(femGrid.getElements(), globalData);
 	}
 	public void solveSystemOfExuation(){
-		result.solveSystemOfEquationGS();
+		result.solveSystemOfEquation();
 	}
 	public void printTemperatures(){
 		double[] tg=result.getTg();
 		for(int i=0; i<tg.length;i++){
-			System.out.println("węzeł numer "+ i+ " x= "+femGrid.getNodes()[i].getX()+" t="+tg[i]);
+			System.out.println("węzeł numer "+ i+ " x= "+femGrid.getNodes()[i].getX()+ " q="+femGrid.getNodes()[i].getQ()+
+					" alfa="+femGrid.getNodes()[i].getAlfa()+" t="+tg[i]);
 		}
 	}
 	public Result getResult(){
@@ -151,5 +158,8 @@ public class Calculations {
 	}
 	public FemGrid getFemGrid(){
 		return femGrid;
+	}
+	public void printGlobalMatrix(){
+		result.printGlobalMatrix();
 	}
 }
