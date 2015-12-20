@@ -1,7 +1,9 @@
 package mes;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,8 +19,6 @@ public class Calculations {
 	private GlobalData globalData;
 	private FemGrid femGrid;
 	private Result result;
-	//private Element[] elements;
-	//private Node[] nodes;
 	private int ne;
 	private double l=0;
 	private Scanner in=new Scanner(System.in);
@@ -113,10 +113,11 @@ public class Calculations {
 	}
 
 	public void setGlobalData() {
-		System.out.println("Podaj temperature otoczenia:");
-		double tEnv=in.nextDouble();
-		
-		globalData=new GlobalData(ne, ne+1, l,tEnv);
+		System.out.println("Podaj temperature otoczenia w pierwszym wezle:");
+		double tEnv1=in.nextDouble();
+		System.out.println("Podaj temperature otoczenia w ostatnim wezle:");
+		double tEnv2=in.nextDouble();
+		globalData=new GlobalData(ne, ne+1, l,tEnv1, tEnv2);
 		
 	}
 
@@ -147,11 +148,25 @@ public class Calculations {
 		result.solveSystemOfEquation();
 	}
 	public void printTemperatures(){
+		System.out.println("=================================================");
+		System.out.println("Obliczone temperatury w węzłach:");
 		double[] tg=result.getTg();
 		for(int i=0; i<tg.length;i++){
 			System.out.println("węzeł numer "+ i+ " x= "+femGrid.getNodes()[i].getX()+ " q="+femGrid.getNodes()[i].getQ()+
 					" alfa="+femGrid.getNodes()[i].getAlfa()+" t="+tg[i]);
 		}
+			PrintWriter out;
+			try {
+				out = new PrintWriter("results.txt");
+				for(int i=0; i<tg.length;i++){
+					out.println("węzeł numer "+ i+ " x= "+femGrid.getNodes()[i].getX()+ " q="+femGrid.getNodes()[i].getQ()+
+							" alfa="+femGrid.getNodes()[i].getAlfa()+" t="+tg[i]);
+				}
+			      out.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	public Result getResult(){
 		return result;

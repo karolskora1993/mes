@@ -41,9 +41,10 @@ public class Result {
 			}
 			System.out.println();
 		}
+		System.out.println();
 		System.out.println("Wektor glopalny P:");
 		for (int i = 0; i < pg.length; i++) {
-			System.out.print(" "+hg[i]+" ");
+			System.out.println(" "+pg[i]+" ");
 		}
 	}
 }

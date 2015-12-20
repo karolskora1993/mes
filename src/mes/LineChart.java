@@ -16,7 +16,7 @@ public class LineChart extends ApplicationFrame
       this.calc=calc;
       JFreeChart lineChart = ChartFactory.createLineChart(
          chartTitle,
-         "odległość[m]","temperatura",
+         "odległość[m]","temperatura[k]",
          createDataset(),
          PlotOrientation.VERTICAL,
          true,true,false);

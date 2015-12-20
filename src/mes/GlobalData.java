@@ -5,13 +5,15 @@ public class GlobalData {
 	private  int ne;
 	private  int nh;
 	private  double l;
-	private double tEnv;
+	private double tEnv1;
+	private double tEnv2;
 	
-	public GlobalData(int ne, int nh, double l, double tEnv) {
+	public GlobalData(int ne, int nh, double l, double tEnv1, double tEnv2) {
 		this.ne = ne;
 		this.nh = nh;
 		this.l = l;
-		this.tEnv=tEnv;
+		this.tEnv1=tEnv1;
+		this.tEnv2=tEnv1;
 	}
 
 	public  int getNe() {
@@ -27,7 +29,10 @@ public class GlobalData {
 	}
 
 	public double getTEnv(){
-		return tEnv;
+		return tEnv1;
+	}
+	public double getTEnv2(){
+		return tEnv2;
 	}
 
 

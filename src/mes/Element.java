@@ -47,7 +47,7 @@ public class Element {
 		else if(secondNode.getAlfa()!=0){
 			hl[1][1]+= secondNode.getAlfa() * se;
 			
-			pl[1]+=(-1)*secondNode.getAlfa()*globalData.getTEnv()*se;
+			pl[1]+=(-1)*secondNode.getAlfa()*globalData.getTEnv2()*se;
 		}
 		
 		if(firstNode.getQ()!=0)

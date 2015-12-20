@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<elements_data>
+	<element>
+        <id>1</id>
+        <dlugosc>2.5</dlugosc>
+        <wspolczynnik_przewodzenia>50</wspolczynnik_przewodzenia>
+        <przekroj>2</przekroj>
+        <alfa>0</alfa>
+        <q>-150</q>
+    </element>
+    <element>
+        <id>2</id>
+        <dlugosc>2.5</dlugosc>
+        <wspolczynnik_przewodzenia>50</wspolczynnik_przewodzenia>
+        <przekroj>2</przekroj>
+        <alfa>10</alfa>
+        <q>0</q>
+    </element>
+    </elements_data>
